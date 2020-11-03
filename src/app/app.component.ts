@@ -105,8 +105,6 @@ export class AppComponent implements OnInit {
 
     // this.filteredList = this.articlesList;
     // this.cdr.detectChanges();
-    // this.filteredList = this.articlesList.filter(data => data.source.id === id);
-    // this.cdr.detectChanges();
   }
 
   filterList() {
