@@ -49,8 +49,8 @@ export class AppComponent implements OnInit {
       this.query = 'bitcoin';
     } else {
       this.domains = 'techcrunch.com';
-    // tslint:disable-next-line: align
-    } if (this.country) {
+    }
+    if (this.country) {
       this.query = null;
       this.domains = null;
     }
