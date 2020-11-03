@@ -1,9 +1,9 @@
 import { HttpHeaders } from '@angular/common/http';
 
-const baseUrl = 'http://newsapi.org/v2';
+const baseUrl = 'https://newsapi.org/v2';
 
 export const NewsConstants = {
-  environmentUrl: `http://newsapi.org/v2`,
+  environmentUrl: `https://newsapi.org/v2`,
    everything: `${baseUrl}/everything`,
    apiKey: '4ffe40ad0d90484686a08db204aed51f'
   };

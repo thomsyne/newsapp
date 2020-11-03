@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
 import { NewsConstants, NewsSources } from './constants/app.constants';
@@ -11,7 +12,12 @@ import { NewsService } from './services/news.service';
 })
 export class AppComponent implements OnInit {
   title = 'NewsApp';
+  date = null;
 
+  month = null;
+  day = null;
+
+  cityValue = '';
   sourceValue = null;
   authorValue = null;
   country = null;
@@ -30,10 +36,12 @@ export class AppComponent implements OnInit {
   constructor(
     private readonly newsService: NewsService,
     private readonly cdr: ChangeDetectorRef,
+    private readonly datepipe: DatePipe,
   ) {}
 
   ngOnInit() {
     this.fetchNews();
+    // this.myFunction('21/10/2020');
   }
 
   fetchNews() {
@@ -70,9 +78,8 @@ export class AppComponent implements OnInit {
             return authorResp.filter(data => data.id !== null).find(a => a.value === value);
           });
         });
+        console.log(this.filteredList);
         console.log(this.sourcesList);
-
-        console.log(this.articlesList);
       },
       (error) => {
 
@@ -105,16 +112,20 @@ export class AppComponent implements OnInit {
 
     // this.filteredList = this.articlesList;
     // this.cdr.detectChanges();
-    // this.filteredList = this.articlesList.filter(data => data.source.id === id);
-    // this.cdr.detectChanges();
   }
 
   filterList() {
+    this.cityValue = ((document.getElementById('city') as HTMLInputElement).value);
     this.filteredList = this.articlesList;
     if (this.authorValue !== null) {
       this.filteredList = this.sourceValue !== null ?
-          this.filteredList.filter(data => (data.source.id === this.sourceValue) && (data.author === this.authorValue)) :
-          this.filteredList.filter(data => data.author === this.authorValue);
+          this.filteredList.filter(data =>
+              (data.source.id === this.sourceValue) && (data.author === this.authorValue) &&
+              (data.publishedAt.includes(this.cityValue))
+              ) :
+          this.filteredList.filter(data => data.author === this.authorValue &&
+            (data.publishedAt.includes(this.cityValue)));
+      console.log(this.filteredList);
     }
     if (this.authorValue === null || this.sourceValue === null) {
       this.filteredList = this.articlesList;
