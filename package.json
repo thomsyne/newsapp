@@ -7,10 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postcss:build": "postcss src/styles.pcss -o src/styles.css",
-    "prestart": "npm run postcss:build",
-    "prebuild": "npm run postcss:build -- --env=production"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
