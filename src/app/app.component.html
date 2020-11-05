@@ -124,7 +124,7 @@
     
 
     <div class="px-10 py-5 mx-3">
-        <button type="submit" (click)="filterList()" class="bg-indigo-600 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+        <button type="submit" class="bg-indigo-600 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
           Filter
         </button>
       </div>
@@ -148,9 +148,8 @@
     </p>
   </div>
   <div class="px-6 py-4">
-    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#photography</span>
-    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#travel</span>
-    <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#winter</span>
+    <span class="inline-block bg-grey-lighter rounded-full py-1 text-sm font-semibold text-grey-darker mr-1">Author:</span>
+    <span class="inline-block bg-grey-lighter rounded-full py-1 text-sm font-semibold text-grey-darker mr-2">{{article.author}}</span>
   </div>
 </div>
 </div>

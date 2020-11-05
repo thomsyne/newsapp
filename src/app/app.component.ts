@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   month = null;
   day = null;
 
-  cityValue = '';
+  cityValue = null;
   sourceValue = null;
   authorValue = null;
   country = null;
@@ -41,7 +41,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.fetchNews();
-    // this.myFunction('21/10/2020');
   }
 
   fetchNews() {
@@ -78,8 +77,6 @@ export class AppComponent implements OnInit {
             return authorResp.filter(data => data.id !== null).find(a => a.value === value);
           });
         });
-        console.log(this.filteredList);
-        console.log(this.sourcesList);
       },
       (error) => {
 
@@ -109,27 +106,25 @@ export class AppComponent implements OnInit {
         break;
     }
 
-
-    // this.filteredList = this.articlesList;
-    // this.cdr.detectChanges();
   }
 
   filterList() {
     this.cityValue = ((document.getElementById('city') as HTMLInputElement).value);
     this.filteredList = this.articlesList;
+
     if (this.authorValue !== null) {
-      this.filteredList = this.sourceValue !== null ?
-          this.filteredList.filter(data =>
-              (data.source.id === this.sourceValue) && (data.author === this.authorValue) &&
-              (data.publishedAt.includes(this.cityValue))
-              ) :
-          this.filteredList.filter(data => data.author === this.authorValue &&
-            (data.publishedAt.includes(this.cityValue)));
-      console.log(this.filteredList);
+      this.filteredList = this.filteredList.filter(data => (data.author === this.authorValue));
     }
-    if (this.authorValue === null || this.sourceValue === null) {
-      this.filteredList = this.articlesList;
+    if (this.sourceValue !== null) {
+      this.filteredList = this.filteredList.filter(data => (data.source.id === this.sourceValue));
     }
+    if (this.cityValue !== null) {
+      this.filteredList = this.filteredList.filter(data => data.publishedAt.includes(this.cityValue));
+    }
+  }
+
+  openModal(text: string) {
+
   }
 
   reloadPage() {
